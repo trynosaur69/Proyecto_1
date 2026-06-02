@@ -28,6 +28,7 @@ def ini_int():
                 msgbox(mensaje_despedida)
             elif valor_de_datos[0] == "":
                 msgbox("La lista está vacia, por favor introduzca los datos")
+            res_ini_int(valor_de_datos)
         elif programas == "LANGTON":
             msgbox("Escogiste Langton")
             valor_de_datos = multenterbox(mensaje_pedida,titulo_pedida, nombres_de_datos)
@@ -35,7 +36,12 @@ def ini_int():
                 msgbox(mensaje_despedida)
             elif valor_de_datos[0] == "":
                 msgbox("La lista está vacia, por favor introduzca los datos")
+            res_ini_int(valor_de_datos)
         else:
             msgbox(mensaje_despedida)
     else:
         msgbox(mensaje_despedida)
+    
+def res_ini_int(L):
+    #Funcion que revisa restricciones
+    
