@@ -1,9 +1,11 @@
 import pygame
 import conway_logica as con
 
+#estos se deben cambiar a imputs
 tam = 10
 filas = 50
 columnas = 50
+#tick no
 tick = 10
 
 def main():
