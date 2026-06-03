@@ -1,4 +1,3 @@
-
 from random import randint
 from copy import deepcopy
 
@@ -7,7 +6,8 @@ def generar_matriz_aleatoria(filas, columnas):
     especificadas con valores enteros aleatorios de 0 o 1"""
     return [[randint(0, 1) for c in range(columnas)] for f in range(filas)]    
     
-def generar_matriz_vacia(filas, cols):
+def generar_matriz_vacia(filas, cols,0):
+    return [[0 for c in range(columnas)] for f in range(filas)]
     
 
 def obtener_vecinos(M, f, c):
