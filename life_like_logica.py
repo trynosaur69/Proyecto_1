@@ -1,43 +1,45 @@
 from random import randint
 from copy import deepcopy
+import interfaz_inicial
+
 
 def generar_matriz_aleatoria(filas, columnas):
     """Función que retorna una matriz de las dimensiones
     especificadas con valores enteros aleatorios de 0 o 1"""
     return [[randint(0, 1) for c in range(columnas)] for f in range(filas)]    
     
-def generar_matriz_vacia(filas, cols,0):
+def generar_matriz_vacia(filas, columnas):
     return [[0 for c in range(columnas)] for f in range(filas)]
     
 
 def obtener_vecinos(M, f, c):
-    """Función que retorna una lista con los estados de
-    los 8 vecinos de la célula en la posición f, c de M."""
-    # Modulo de len(matriz)
     vecinos = []
-    for i in range(-1,2):
-        for j in range(-1,2):
-            vecinos.append(M[(f+i) % len(M)][(c+j) % len(M)])
-    vecinos.pop(4)
+    filas = len(M)
+    columnas = len(M[0]) 
+    
+    for i in range(-1, 2):
+        for j in range(-1, 2):
+            if i == 0 and j == 0:
+                continue 
+            nueva_f = (f + i) % filas
+            nueva_c = (c + j) % columnas
+            
+            vecinos.append(M[nueva_f][nueva_c])
+            
     return vecinos
 
-def transicion_celula(estado, vecinos):
-    """Retorna el nuevo estado de la célula de acuerdo
-    al estado de sus vecinos.
-    Si estado == 0 y tiene 3 vecinos vivos --> viva
-    Si estado == 1 y tiene menos de 2 vecinos vivos --> muere
-    Si estado == 1 y tiene más de 3 vecinos vivos --> muere
-    Cualquier otra combinación, el estado sigue igual."""
+
+def transicion_celula(estado, vecinos,birth,surv):
     sumatoria = vecinos.count(1)
-    if estado == 0 and sumatoria == 3:
+    if estado == 0 and str(sumatoria) in birth:
         estado = 1
-    elif estado == 1 and sumatoria <2:
-        estado = 0
-    elif estado == 1 and sumatoria > 3:
+    elif estado == 1 and str(sumatoria) in surv:
+        estado = 1
+    else:
         estado = 0         
     return estado
 
-def transicion(M):
+def transicion(M,birth,surv):
     #deepcopy de matriz
     """Toma a la matriz completa y le aplica la función de
     transición a cada célula con su propio vecindario y deja
@@ -46,11 +48,7 @@ def transicion(M):
     for i in range(len(M)):
         for j in range(len(M[0])):
            vecinos = obtener_vecinos(M, i, j)
-           transicion_celula(M[i][j], vecinos)
-           nuevaM[i][j] = transicion_celula(M[i][j], vecinos)
+           transicion_celula(M[i][j], vecinos,birth,surv)
+           nuevaM[i][j] = transicion_celula(M[i][j], vecinos,birth,surv)
      
     return nuevaM
-
-  
-  
-  
