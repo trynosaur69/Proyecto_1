@@ -6,6 +6,17 @@ import langton_ant_logica as Horlan
 TICK = 100000
 
 def main(reglas,filas,columnas,tamaño):
+    """Programa principal de La Hormiga de Langton.
+    Entradas y restricciones:
+    - reglas: : Sin restricciones.
+    - filas: : Sin restricciones.
+    - columnas: : Sin restricciones.
+    - tamaño: : Sin restricciones.
+    Salidas:
+    - Ninguna
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro"""
     pygame.init()
     Horlan.init(filas,columnas,reglas)
     ancho = Horlan.cols * tamaño
