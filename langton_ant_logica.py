@@ -1,3 +1,7 @@
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
+
 import random
 import interfaz_inicial
 
@@ -17,6 +21,16 @@ L = {}
 R = {}
 
 def siguiente(giro, célula, matriz):
+    """Función que determina la siguiente posición de la hormiga en la matriz.
+    Entradas y restricciones:
+    - giro: Lista formada del string de Ls y Rs: Sin restricciones.
+    - célula: Valor de la posición actual en la matriz: Sin restricciones.
+    - matriz: Matriz por la que se desplaza la hormiga: Sin restricciones.
+    Salidas:
+    - Siguiente posición de la hormiga.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro"""
     if dirección == "R" and giro[célula % len(giro)] == "R" or dirección == "L" and giro[célula % len(giro)] == "L":
         girar_hormiga("D")
         return (ant_f + 1) % len(matriz), ant_c
@@ -31,6 +45,15 @@ def siguiente(giro, célula, matriz):
         return ant_f, (ant_c - 1) % len(matriz[0])
 
 def girar_hormiga(nueva_dirección):
+    """Procedimiento que recibe una dirección y actualiza la orientación de la hormiga.
+    Entradas y restricciones:
+    - dirección: Dirección actual de la hormiga: Sin restricciones.
+    - nueva_dirección: Dirección nueva de la hormiga: Sin restricciones.
+    Salidas:
+    - Nueva dirección de la hormiga.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro"""
     global dirección
     if nueva_dirección in ("U", "D") and dirección in ("L", "R"):
         dirección = nueva_dirección
