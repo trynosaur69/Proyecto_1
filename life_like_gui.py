@@ -1,4 +1,4 @@
-
+import pickle
 import pygame
 import life_like_logica as con
 
@@ -39,6 +39,20 @@ def main(surv,birth,tamaño,filas,columnas):
                     M = con.generar_matriz_aleatoria(filas, columnas)
                 elif keys[pygame.K_b]:
                     M = con.generar_matriz_vacia(filas,columnas)
+                elif keys[pygame.K_g]:
+                    estado_conway = {
+                        "matriz": M,
+                        "pausa": pausa
+                    }
+                    with open("partida_conway.pkl", "wb") as archivo:
+                        pickle.dump(estado_conway, archivo)
+                    print("Simulación de Conway guardada")
+                elif keys[pygame.K_c]:
+                    with open("partida_conway.pkl", "rb") as archivo:
+                        estado_cargado = pickle.load(archivo)
+                    M = estado_cargado["matriz"]
+                    pausa = estado_cargado["pausa"]
+                    print("Simulación cargada")
             if event.type == pygame.MOUSEBUTTONDOWN:
                 buttons = pygame.mouse.get_pressed()
                 x, y = pygame.mouse.get_pos()
@@ -62,3 +76,4 @@ def main(surv,birth,tamaño,filas,columnas):
 
 if __name__ == "__main__":
     main()
+
