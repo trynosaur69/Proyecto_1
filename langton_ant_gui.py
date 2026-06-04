@@ -1,14 +1,14 @@
 import pygame
-import Hormiga_de_Langton_Lógica as Horlan
+import langton_ant_logica as Horlan
 
 TAM = 3
 TICK = 100000
 
-def main():
+def main(reglas,filas,columnas,tamaño):
     pygame.init()
-    Horlan.init()
-    ancho = Horlan.cols * TAM
-    alto = Horlan.filas * TAM
+    Horlan.init(filas,columnas,reglas)
+    ancho = Horlan.cols * TAM+tamaño
+    alto = Horlan.filas * TAM+tamaño
     window = pygame.display.set_mode((ancho, alto))
     clock = pygame.time.Clock()
     loop = True
@@ -19,13 +19,13 @@ def main():
                 loop = False
         for f in range(Horlan.filas):
             for c in range(Horlan.cols):
-                x = c * TAM
-                y = f * TAM
+                x = c * TAM +tamaño
+                y = f * TAM +tamaño
                 if Horlan.matriz[f][c] in Horlan.colores and Horlan.revisor[f][c] != -2:
                     pygame.draw.rect(window, Horlan.color[Horlan.matriz[f][c]], (x, y, TAM, TAM))
                 if Horlan.matriz[f][c] == -1:
                     pygame.draw.rect(window, (255, 0, 0), (x, y, TAM, TAM))
-        Horlan.avanzar()
+        Horlan.avanzar_hormiga()
         pygame.display.update()
         clock.tick(TICK)
 
@@ -35,3 +35,4 @@ def main():
 if __name__ == "__main__":
     main()
     
+
