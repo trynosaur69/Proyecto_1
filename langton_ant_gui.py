@@ -1,3 +1,5 @@
+#Queda pendiente pickle y reiniciar con pausar y matriz 0
+
 import pygame
 import langton_ant_logica as Horlan
 
