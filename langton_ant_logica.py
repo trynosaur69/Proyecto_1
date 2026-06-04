@@ -1,11 +1,7 @@
 import random
-
-#Ingresar string (LR)
-#Ingresar tamaño de filas, columnas y tamaño de la página
+import interfaz_inicial
 
 matriz = []
-filas = 20
-cols = 20
 
 ant_f = 0
 ant_c = 0
@@ -20,30 +16,30 @@ revisor = []
 L = {}
 R = {}
 
-def siguiente_posición(giro, célula, matriz):
+def siguiente(giro, célula, matriz):
     if dirección == "R" and giro[célula % len(giro)] == "R" or dirección == "L" and giro[célula % len(giro)] == "L":
-        cambiar_dirección("D")
+        girar_hormiga("D")
         return (ant_f + 1) % len(matriz), ant_c
     elif dirección == "R" and giro[célula % len(giro)] == "L" or dirección == "L" and giro[célula % len(giro)] == "R":
-        cambiar_dirección("U")
+        girar_hormiga("U")
         return (ant_f - 1) % len(matriz), ant_c
     elif dirección == "U" and giro[célula % len(giro)] == "R" or dirección == "D" and giro[célula % len(giro)] == "L":
-        cambiar_dirección("R")
+        girar_hormiga("R")
         return ant_f, (ant_c + 1) % len(matriz[0])
     elif dirección == "U" and giro[célula % len(giro)] == "L" or dirección == "D" and giro[célula % len(giro)] == "R":
-        cambiar_dirección("L")
+        girar_hormiga("L")
         return ant_f, (ant_c - 1) % len(matriz[0])
 
-def cambiar_dirección(nueva_dirección):
+def girar_hormiga(nueva_dirección):
     global dirección
     if nueva_dirección in ("U", "D") and dirección in ("L", "R"):
         dirección = nueva_dirección
     elif nueva_dirección in ("L", "R") and dirección in ("U", "D"):
         dirección = nueva_dirección
 
-def avanzar():
+def avanzar_hormiga():
     global ant_f, ant_c, matriz, célula, revisor
-    nueva_f, nueva_c = siguiente_posición(giro, célula, matriz)
+    nueva_f, nueva_c = siguiente(giro, célula, matriz)
     matriz[ant_f][ant_c] = (célula + 1) % len(colores)
     célula = matriz[nueva_f][nueva_c]
     matriz[nueva_f][nueva_c] = hormiga
@@ -51,9 +47,9 @@ def avanzar():
     ant_f = nueva_f
     ant_c = nueva_c
 
-def generar_colores():
+def generar_colores(reglas):
     global colores, color, giro
-    string = "LLRLLLRRRRRR"
+    string = reglas
     giro = []
     giro = list(string)
     colores = []
@@ -81,12 +77,12 @@ def crear_matriz(filas, cols, valor):
         M.append(fila)
     return M
 
-def init():
+def init(filasi,columnas,reglas):
     global filas, cols, ant_f, ant_c
     global hormiga, dirección, matriz, color, giro, revisor
-    filas = 250
-    cols = 250
-    generar_colores()
+    filas = filasi
+    cols = columnas
+    generar_colores(reglas)
     matriz = crear_matriz(filas, cols, 0)
     revisor = crear_matriz(filas, cols, -2)
     ant_f = filas // 2
