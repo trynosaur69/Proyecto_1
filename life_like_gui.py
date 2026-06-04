@@ -1,18 +1,20 @@
+
 import pygame
-import conway_logica as con
+import life_like_logica as con
 
 #estos se deben cambiar a imputs
-tam = 10
-filas = 50
-columnas = 50
+#tam = 3
+#filas = 150
+#columnas = 150
+
 #tick no
 tick = 10
 
-def main():
+def main(surv,birth,tamaño,filas,columnas):
     pygame.init()
     clock = pygame.time.Clock()
-    M = con.generar_matriz(filas, columnas)
-    w, h = columnas * tam, filas * tam
+    M = con.generar_matriz_aleatoria(filas, columnas)
+    w, h = columnas * tamaño, filas * tamaño
     window = pygame.display.set_mode((w, h))
     loop = True
     pausa = False
@@ -22,25 +24,29 @@ def main():
                 loop = False
             if event.type == pygame.KEYDOWN:
                 keys = pygame.key.get_pressed()
-                if keys[pygame.K_p]:
+                if keys[pygame.K_SPACE]:
                     pausa = not pausa
+                elif keys[pygame.K_r]:
+                    M = con.generar_matriz_aleatoria(filas, columnas)
+                elif keys[pygame.K_b]:
+                    M = con.generar_matriz_vacia(filas,columnas)
             if event.type == pygame.MOUSEBUTTONDOWN:
                 buttons = pygame.mouse.get_pressed()
                 x, y = pygame.mouse.get_pos()
                 if buttons[0]:
-                    f = y // tam
-                    c = x // tam
+                    f = y // tamaño
+                    c = x // tamaño
                     M[f][c] = (M[f][c] + 1) % 2
                     
         window.fill((0, 0, 0))
         for f in range(filas):
             for c in range(columnas):
                 if M[f][c] == 1:
-                    x = c * tam
-                    y = f * tam
-                    pygame.draw.rect(window, (0, 255, 128), (x, y, tam, tam))
+                    x = c * tamaño
+                    y = f * tamaño
+                    pygame.draw.rect(window, (0, 255, 128), (x, y, tamaño, tamaño))
         if not pausa:
-            M = con.transicion(M)
+            M = con.transicion(M,birth,surv)
         pygame.display.update()
         clock.tick(10)
     pygame.quit()
