@@ -2,10 +2,7 @@
 import pygame
 import life_like_logica as con
 
-#estos se deben cambiar a imputs
-#tam = 3
-#filas = 150
-#columnas = 150
+
 
 #tick no
 tick = 10
