@@ -9,6 +9,16 @@ def generar_matriz_aleatoria(filas, columnas):
     return [[randint(0, 1) for c in range(columnas)] for f in range(filas)]    
     
 def generar_matriz_vacia(filas, columnas):
+    """Función que retorna una matriz aleatoria con valores 0 usando las dimensiones \
+    de las filas y las columnas introducidas por el usuario.
+    Entradas y restricciones:
+    - Filas: entero positivo mayor a 1.
+    - Columnas: entero positivo mayor a 1.
+    Salidas:
+    - retorna matríz con valores 0.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro"""
     return [[0 for c in range(columnas)] for f in range(filas)]
     
 
