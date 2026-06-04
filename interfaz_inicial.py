@@ -1,5 +1,5 @@
 from easygui import *
-import langton_ant_gui as horlan
+import langton_ant_gui as horlan2
 import life_like_gui as lili
 
 
@@ -117,7 +117,7 @@ def pre_ini_int(L, programas):
                 ini_int()
                 return        
         
-        horlan.main(reglas,filas,columnas,tamaño)
+        horlan2.main(reglas,filas,columnas,tamaño)
         
             
 
