@@ -128,7 +128,7 @@ def crear_matriz(filas, cols, valor):
 def init(filasi,columnas,reglas):
     global filas, cols, ant_f, ant_c
     global hormiga, dirección, matriz, color, giro, revisor
-    filas = filas
+    filas = filasi
     cols = columnas
     generar_colores(reglas)
     matriz = crear_matriz(filas, cols, 0)
