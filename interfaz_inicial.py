@@ -1,4 +1,5 @@
 from easygui import *
+import langton_ant_gui as horlan
 
 
 def ini_int():
@@ -66,7 +67,15 @@ def pre_ini_int(L, programas):
         ini_int()
         return
     filas = int(L[1])
+    if filas < 1:
+        msgbox("Introduzca números enteros mayores a 0 en las filas.")
+        ini_int()
+        return
     columnas = int(L[2])
+    if columnas < 1:
+        msgbox("Introduzca números enteros mayores a 0 en las columnas.")
+        ini_int()
+        return
     tamaño = int(L[3])
     contador = 0
     #para editar todo
@@ -100,6 +109,10 @@ def pre_ini_int(L, programas):
                 msgbox("Introduzca una combinación de R Y L solamente.")
                 ini_int()
                 return        
+        
+        horlan.main(reglas,filas,columnas,tamaño)
+        
+            
 
 if __name__ == "__main__":
     ini_int()
