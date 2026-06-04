@@ -35,7 +35,32 @@ def main(reglas,filas,columnas,tamaño):
                     pausado = not pausado
                 elif event.key == pygame.K_r:
                     window.fill(Horlan.color[0])
-                    Horlan.init(filas,columnas,reglas)                   
+                    Horlan.init(filas,columnas,reglas)
+                elif event.key == pygame.K_g:
+                    estado_juego = {
+                        "matriz": Horlan.matriz,
+                        "revisor": Horlan.revisor,
+                        "ant_f": Horlan.ant_f,
+                        "ant_c": Horlan.ant_c,
+                        "direccion": Horlan.dirección,
+                        "celula": Horlan.célula,
+                        "pausado": pausado
+                    }
+                    with open("partida_hormiga.pkl", "wb") as archivo:
+                        pickle.dump(estado_juego, archivo)
+                    print("Simulación guardada")
+                elif event.key == pygame.K_c:
+                    with open("partida_hormiga.pkl", "rb") as archivo:
+                        estado_cargado = pickle.load(archivo)
+                        Horlan.matriz = estado_cargado["matriz"]
+                        Horlan.revisor = estado_cargado["revisor"]
+                        Horlan.ant_f = estado_cargado["ant_f"]
+                        Horlan.ant_c = estado_cargado["ant_c"]
+                        Horlan.dirección = estado_cargado["direccion"]
+                        Horlan.célula = estado_cargado["celula"]
+                        pausado = estado_cargado["pausado"]
+                        window.fill(Horlan.color[0])
+                        print("Simulación cargada")
         for f in range(Horlan.filas):
             for c in range(Horlan.cols):
                 x = c * tamaño
@@ -54,5 +79,4 @@ def main(reglas,filas,columnas,tamaño):
 
 if __name__ == "__main__":
     main()
-    
 
