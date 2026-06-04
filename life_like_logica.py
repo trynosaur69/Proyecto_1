@@ -5,7 +5,16 @@ import interfaz_inicial
 
 def generar_matriz_aleatoria(filas, columnas):
     """Función que retorna una matriz de las dimensiones
-    especificadas con valores enteros aleatorios de 0 o 1"""
+    especificadas con valores enteros aleatorios de 0 o 1.
+    Entradas y restricciones:
+    - Filas: entero positivo mayor a 1.
+    - Columnas: entero positivo mayor a 1.
+    Salidas:
+    - retorna matríz con valores 0 y 1.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro
+    """
     return [[randint(0, 1) for c in range(columnas)] for f in range(filas)]    
     
 def generar_matriz_vacia(filas, columnas):
