@@ -3,7 +3,7 @@
 #Alexei Quesada Leandro
 
 import random
-import interfaz_inicial as intini
+import interfaz_inicial 
 
 matriz = []
 revisor = []
@@ -130,7 +130,7 @@ def init(filasi,columnas,reglas):
     - columnas: Columnas que tendrá la matriz de la hormiga: Sin restricciones.
     - reglas: Secuencia de letras que se utilizará en la matriz: Sin restricciones.
     Salidas:
-    - Ninguna
+    - Ninguna """
     global filas, cols, ant_f, ant_c
     global hormiga, dirección, matriz, color, giro, revisor
     filas = filasi
