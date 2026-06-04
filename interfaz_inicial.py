@@ -4,6 +4,16 @@ import life_like_gui as lili
 
 
 def ini_int():
+    """
+    Interfaz principal del programa.
+    Entradas y restricciones:
+    - Ninguna.
+    Salidas:
+    - Ninguna (despliega ventanas emergentes y llama a otras funciones).
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro
+    """
     #Variables encargadas de dar los mensajes y guardar valores:
     mensaje_inicial = "¡Hola Usuario! Bienvenido al programa del Juego de la Vida de Conway y La Hormiga de Langton."
     decision = "¿Desea usted continuar?"
@@ -53,6 +63,20 @@ def ini_int():
         msgbox(mensaje_despedida)
     
 def pre_ini_int(L, programas):
+    """
+    Función que prepara y valida los datos antes de iniciar la simulación.
+    Entradas y restricciones:
+    - L: Lista que contiene [Reglas, Filas, Columnas, Tamaño].
+    - Filas, Columnas y Tamaño deben ser números enteros mayores a 0.
+      Restricciones para CONWAY: Las filas y columnas deben ser iguales. Las reglas deben contener una "/" y al menos un número para nacimiento y otro para supervivencia.
+      estricciones para LANGTON: Las reglas solo pueden contener las letras 'R' y 'L'.
+    - programas: String con el nombre del juego ("CONWAY" o "LANGTON").
+    Salidas:
+    - Ninguna (transfiere el control a los módulos principales de cada juego).
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro
+    """
     #Funcion que prepara los strings para llevarlos a cada función
     reglas = L[0]
     if L[1].isdigit() == False:
