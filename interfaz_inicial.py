@@ -1,5 +1,6 @@
 from easygui import *
 import langton_ant_gui as horlan
+import life_like_gui as lili
 
 
 def ini_int():
@@ -84,7 +85,11 @@ def pre_ini_int(L, programas):
             msgbox("Introduzca una separación entre reglas válida, ejemplo B23/S234.")
             ini_int()
             return
+        elif filas != columnas:
+            msgbox("El tamaño de filas y columnas debe ser el mismo")
+            ini_int()
         else:
+         global birth, surv
          birth = list(reglas[0:reglas.index("/")])
          surv = list(reglas[reglas.index("/")+1:])
         for i in range(len(birth)):
@@ -102,6 +107,8 @@ def pre_ini_int(L, programas):
             msgbox("Introduzca al menos un número entero en la regla de sobrevivir.")
             ini_int()
             return
+        lili.main(surv,birth,tamaño,filas,columnas)
+        
     else:
         reglas = reglas.upper()
         for i in range(len(L[0])):
