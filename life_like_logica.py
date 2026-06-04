@@ -69,6 +69,8 @@ def transicion_celula(estado, vecinos,birth,surv):
     -Vecinos: lista de vecinos sin restricciones.
     -birth: lista de reglas para que una celula nazca sin restricciones.
     -surv: lista de reglas que definen si una celula sobrevive en la siguiente generación. sin restricciones.
+    Salidas:
+    -estado: estado nuevo de la célula.
     Autores:
     Andrey Morales Reyes
     Alexei Quesada Leandro
@@ -86,7 +88,17 @@ def transicion(M,birth,surv):
     #deepcopy de matriz
     """Toma a la matriz completa y le aplica la función de
     transición a cada célula con su propio vecindario y deja
-    el resultado en una matriz nueva."""
+    el resultado en una matriz nueva.
+    Entradas y restricciones:
+    -M: matriz válida que muestra las celulas vivas y muertas sin restricciones.
+    -birth: lista de reglas para que una celula nazca sin restricciones.
+    -surv: lista de reglas que definen si una celula sobrevive en la siguiente generación. sin restricciones.
+    Salidas:
+    -nuevaM: nueva matriz con el estado actualizado de cada una de las células.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro
+    """
     nuevaM = deepcopy(M)
     for i in range(len(M)):
         for j in range(len(M[0])):
