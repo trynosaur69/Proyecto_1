@@ -2,6 +2,7 @@
 
 import pygame
 import langton_ant_logica as Horlan
+import pickle 
 
 TICK = 100000
 
