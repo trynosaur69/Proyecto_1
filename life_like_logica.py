@@ -32,6 +32,18 @@ def generar_matriz_vacia(filas, columnas):
     
 
 def obtener_vecinos(M, f, c):
+    """ 
+    Funcion que retorna el estado de los vecinos o sea su valor de 1 o 0.
+    Entradas y restricciones:
+    -M: matriz de igual cantidad de filas y columnas.
+    -f: posición de filas, no tiene restricciones.
+    -c: posición de columnas, no tiene restricciones.
+    Salidas:
+    -vecinos: retorna estado de vecinos.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro
+    """
     vecinos = []
     filas = len(M)
     columnas = len(M[0]) 
