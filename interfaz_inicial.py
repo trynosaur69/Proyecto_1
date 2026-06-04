@@ -1,4 +1,5 @@
-import easygui
+from easygui import *
+
 
 def ini_int():
     #Variables encargadas de dar los mensajes y guardar valores:
@@ -7,10 +8,6 @@ def ini_int():
     mensaje_despedida = "¡Hasta pronto, tenga bonito día!"
     decisiones = ["CONWAY","LANGTON"]
     titulo = "PROGRAMA PRINCIPAL"
-    reglas = 0
-    filas = 0
-    cols = 0
-    celdas = 0
     mensaje_pedida = "Introduzca las reglas,filas,columnas y el tamaño:"
     titulo_pedida = "DATOS NECESARIOS"
     nombres_de_datos = ["Reglas","Filas","Columnas","Tamaño de celdas"]
@@ -30,6 +27,7 @@ def ini_int():
             while i != len(valor_de_datos):
                 if valor_de_datos[i] == "":
                     msgbox("La lista está vacia, por favor introduzca los datos")
+                    ini_int()
                     raise Exception("No se puede enviar a la funcion esta lista")
                 else:
                     i +=1   
@@ -42,7 +40,7 @@ def ini_int():
             while i != len(valor_de_datos):
                 if valor_de_datos[i] == "":
                     msgbox("La lista está vacia, por favor introduzca los datos")
-                    i = len(valor_de_datos)
+                    ini_int()
                     raise Exception("No se puede enviar a la funcion esta lista")
                 else:
                     i +=1
@@ -55,25 +53,51 @@ def ini_int():
 def pre_ini_int(L, programas):
     #Funcion que prepara los strings para llevarlos a cada función
     reglas = L[0]
+    if L[1].isdigit() == False:
+        msgbox("Introduzca números enteros en la cantidad de filas.")
+        ini_int()
+    elif L[2].isdigit() == False:
+        msgbox("Introduzca números enteros en la cantidad de columnas.")
+        ini_int()
+    elif L[3].isdigit() == False:
+        msgbox("Introduzca números enteros en el tamaño.")
+        ini_int()
     filas = int(L[1])
     columnas = int(L[2])
     tamaño = int(L[3])
-
-    #for editar todo
+    contador = 0
+    #para editar todo
     if programas == "CONWAY":
-        birth = list(reglas[0:reglas.index("/")])
-        surv = list(reglas[reglas.index("/"):])
-        print(birth,surv)
-        if any(birth) == int:
-            pass
+        if L[0].find("/")== -1:
+            msgbox("Introduzca una separación entre reglas válida, ejemplo B23/S234.")
+            ini_int()
+            raise Exception("Introduzca una separacion válida, ejemplo B23/S234")
         else:
-            raise Exception("Necesita por lo menos un numero")
-        if any(surv) == int:
-            pass
-        else:
-            raise Exception("Necesita por lo menos un numero")
-        
+         birth = list(reglas[0:reglas.index("/")])
+         surv = list(reglas[reglas.index("/")+1:])
+        for i in range(len(birth)):
+            if birth[i].isdigit() == True:
+                contador += 1
+        if contador < 1:
+            msgbox("Introduzca al menos un número entero en la regla de nacimiento.")
+            ini_int()
+            raise Exception("Introduzca al menos un número entero en la regla de nacimiento.")
+        contador = 0
+        for i in range(len(surv)):
+            if surv[i].isdigit() == True:
+                contador += 1
+        if contador < 1:
+            msgbox("Introduzca al menos un número entero en la regla de sobrevivir.")
+            ini_int()
+            raise Exception("Introduzca al menos un número entero en la regla de sobrevivir.")
     else:
         pass
-    
+        
+        
+        
+        
+            
+
+if __name__ == "__main__":
+    ini_int()
     
