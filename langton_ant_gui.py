@@ -24,11 +24,18 @@ def main(reglas,filas,columnas,tamaño):
     window = pygame.display.set_mode((ancho, alto))
     clock = pygame.time.Clock()
     loop = True
+    pausado = False
     window.fill(Horlan.color[0])
     while loop:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 loop = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    pausado = not pausado
+                elif event.key == pygame.K_r:
+                    window.fill(Horlan.color[0])
+                    Horlan.init(filas,columnas,reglas)                   
         for f in range(Horlan.filas):
             for c in range(Horlan.cols):
                 x = c * tamaño
@@ -37,7 +44,8 @@ def main(reglas,filas,columnas,tamaño):
                     pygame.draw.rect(window, Horlan.color[Horlan.matriz[f][c]], (x, y, tamaño, tamaño))
                 if Horlan.matriz[f][c] == -1:
                     pygame.draw.rect(window, (255, 0, 0), (x, y, tamaño, tamaño))
-        Horlan.avanzar_hormiga()
+        if not pausado:
+            Horlan.avanzar_hormiga()
         pygame.display.update()
         clock.tick(TICK)
 
@@ -46,6 +54,5 @@ def main(reglas,filas,columnas,tamaño):
 
 if __name__ == "__main__":
     main()
-    
     
 
