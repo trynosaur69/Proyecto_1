@@ -61,6 +61,18 @@ def obtener_vecinos(M, f, c):
 
 
 def transicion_celula(estado, vecinos,birth,surv):
+    """
+    Se encarga de cambiar el estado de la célula entre viva y muerta. Las reglas introducidas por el usuario determinan
+    cuando nace una célula y cuando sobrevive.
+    Entradas y restricciones:
+    -Estado: entero sin restricciones.
+    -Vecinos: lista de vecinos sin restricciones.
+    -birth: lista de reglas para que una celula nazca sin restricciones.
+    -surv: lista de reglas que definen si una celula sobrevive en la siguiente generación. sin restricciones.
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro
+    """
     sumatoria = vecinos.count(1)
     if estado == 0 and str(sumatoria) in birth:
         estado = 1
