@@ -28,7 +28,7 @@ def ini_int():
                 if valor_de_datos[i] == "":
                     msgbox("La lista está vacia, por favor introduzca los datos")
                     ini_int()
-                    raise Exception("No se puede enviar a la funcion esta lista")
+                    return
                 else:
                     i +=1   
             pre_ini_int(valor_de_datos,programas)
@@ -41,7 +41,7 @@ def ini_int():
                 if valor_de_datos[i] == "":
                     msgbox("La lista está vacia, por favor introduzca los datos")
                     ini_int()
-                    raise Exception("No se puede enviar a la funcion esta lista")
+                    return
                 else:
                     i +=1
             pre_ini_int(valor_de_datos,programas)
@@ -56,12 +56,15 @@ def pre_ini_int(L, programas):
     if L[1].isdigit() == False:
         msgbox("Introduzca números enteros en la cantidad de filas.")
         ini_int()
+        return
     elif L[2].isdigit() == False:
         msgbox("Introduzca números enteros en la cantidad de columnas.")
         ini_int()
+        return
     elif L[3].isdigit() == False:
         msgbox("Introduzca números enteros en el tamaño.")
         ini_int()
+        return
     filas = int(L[1])
     columnas = int(L[2])
     tamaño = int(L[3])
@@ -71,7 +74,7 @@ def pre_ini_int(L, programas):
         if L[0].find("/")== -1:
             msgbox("Introduzca una separación entre reglas válida, ejemplo B23/S234.")
             ini_int()
-            raise Exception("Introduzca una separacion válida, ejemplo B23/S234")
+            return
         else:
          birth = list(reglas[0:reglas.index("/")])
          surv = list(reglas[reglas.index("/")+1:])
@@ -81,7 +84,7 @@ def pre_ini_int(L, programas):
         if contador < 1:
             msgbox("Introduzca al menos un número entero en la regla de nacimiento.")
             ini_int()
-            raise Exception("Introduzca al menos un número entero en la regla de nacimiento.")
+            return
         contador = 0
         for i in range(len(surv)):
             if surv[i].isdigit() == True:
@@ -89,14 +92,14 @@ def pre_ini_int(L, programas):
         if contador < 1:
             msgbox("Introduzca al menos un número entero en la regla de sobrevivir.")
             ini_int()
-            raise Exception("Introduzca al menos un número entero en la regla de sobrevivir.")
+            return
     else:
-        pass
-        
-        
-        
-        
-            
+        reglas = reglas.upper()
+        for i in range(len(L[0])):
+            if reglas[i] != "L" and reglas[i] != "R":
+                msgbox("Introduzca una combinación de R Y L solamente.")
+                ini_int()
+                return        
 
 if __name__ == "__main__":
     ini_int()
