@@ -8,6 +8,18 @@ import life_like_logica as con
 tick = 10
 
 def main(surv,birth,tamaño,filas,columnas):
+    """Programa principal de simulador del juego de la vida de Conway.
+    Entradas y restricciones:
+    - birth : Sin restricciones.
+    - surv : Sin restricciones. 
+    - filas: : Sin restricciones.
+    - columnas: : Sin restricciones.
+    - tamaño: : Sin restricciones.
+    Salidas:
+    - Ninguna
+    Autores:
+    Andrey Morales Reyes
+    Alexei Quesada Leandro"""
     pygame.init()
     clock = pygame.time.Clock()
     M = con.generar_matriz_aleatoria(filas, columnas)
