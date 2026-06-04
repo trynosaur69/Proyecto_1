@@ -107,13 +107,11 @@ def generar_colores(reglas):
 def crear_matriz(filas, cols, valor):
     """Función que se encarga de generar las matrices.
     Entradas y restricciones:
-    - filas: filas que tendrá la matriz
-    - cols: Lista que contiene los colores para cada letra del string.
-    - giro: Lista formada del string de Ls y Rs: Sin restricciones.
+    - filas: Filas que tendrá la matriz
+    - cols: Columnas que tendrá la matriz
+    - valor: Valor de las celdas de la matriz.
     Salidas:
-    - Lista con colores.
-    - Lista con letras del string.
-    - Lista con posiciones del string.
+    - Matriz formada
     Autores:
     Andrey Morales Reyes
     Alexei Quesada Leandro"""
@@ -126,6 +124,13 @@ def crear_matriz(filas, cols, valor):
     return M
 
 def init(filasi,columnas,reglas):
+    """Procedimiento que inicia el programa.
+    Entradas y restricciones:
+    - filasi: Filas que tendrá la matriz de la hormiga: Sin restricciones.
+    - columnas: Columnas que tendrá la matriz de la hormiga: Sin restricciones.
+    - reglas: Secuencia de letras que se utilizará en la matriz: Sin restricciones.
+    Salidas:
+    - Ninguna
     global filas, cols, ant_f, ant_c
     global hormiga, dirección, matriz, color, giro, revisor
     filas = filasi
