@@ -61,7 +61,6 @@ def main(reglas,filas,columnas,tamaño):
                         Horlan.ant_c = estado_cargado["ant_c"]
                         Horlan.dirección = estado_cargado["direccion"]
                         Horlan.célula = estado_cargado["celula"]
-                        pausado = estado_cargado["pausado"]
                         window.fill(Horlan.colores[0])
                         print("Simulación cargada")
         for f in range(Horlan.filas):
