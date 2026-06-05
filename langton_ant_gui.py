@@ -1,22 +1,18 @@
-#Creadores
-#Andrey Morales Reyes
-#Alexei Quesada Leandro
-
 #Queda pendiente pickle y reiniciar con pausar y matriz 0
 
 import pygame
 import langton_ant_logica as Horlan
 import pickle 
 
-TICK = 100000
+TICK = 200
 
 def main(reglas,filas,columnas,tamaño):
     """Programa principal de La Hormiga de Langton.
     Entradas y restricciones:
-    - reglas: Sin restricciones.
-    - filas: Sin restricciones.
-    - columnas: Sin restricciones.
-    - tamaño: Sin restricciones.
+    - reglas: : Sin restricciones.
+    - filas: : Sin restricciones.
+    - columnas: : Sin restricciones.
+    - tamaño: : Sin restricciones.
     Salidas:
     - Ninguna
     Autores:
@@ -30,7 +26,7 @@ def main(reglas,filas,columnas,tamaño):
     clock = pygame.time.Clock()
     loop = True
     pausado = False
-    window.fill(Horlan.color[0])
+    window.fill(Horlan.colores[0])
     while loop:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -39,7 +35,7 @@ def main(reglas,filas,columnas,tamaño):
                 if event.key == pygame.K_SPACE:
                     pausado = not pausado
                 elif event.key == pygame.K_r:
-                    window.fill(Horlan.color[0])
+                    window.fill(Horlan.colores[0])
                     Horlan.init(filas,columnas,reglas)
                 elif event.key == pygame.K_g:
                     estado_juego = {
@@ -64,16 +60,16 @@ def main(reglas,filas,columnas,tamaño):
                         Horlan.dirección = estado_cargado["direccion"]
                         Horlan.célula = estado_cargado["celula"]
                         pausado = estado_cargado["pausado"]
-                        window.fill(Horlan.color[0])
+                        window.fill(Horlan.colores[0])
                         print("Simulación cargada")
         for f in range(Horlan.filas):
             for c in range(Horlan.cols):
                 x = c * tamaño
                 y = f * tamaño
                 if Horlan.matriz[f][c] in Horlan.colores and Horlan.revisor[f][c] != -2:
-                    pygame.draw.rect(window, Horlan.color[Horlan.matriz[f][c]], (x, y, tamaño, tamaño))
+                    pygame.draw.rect(window, Horlan.colores[Horlan.matriz[f][c]], (x, y, tamaño, tamaño))
                 if Horlan.matriz[f][c] == -1:
-                    pygame.draw.rect(window, (255, 0, 0), (x, y, tamaño, tamaño))
+                    pygame.draw.rect(window, (0, 0, 0), (x, y, tamaño, tamaño))
         if not pausado:
             Horlan.avanzar_hormiga()
         pygame.display.update()
@@ -84,4 +80,3 @@ def main(reglas,filas,columnas,tamaño):
 
 if __name__ == "__main__":
     main()
-
