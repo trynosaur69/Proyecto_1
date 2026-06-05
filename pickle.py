@@ -1,3 +1,7 @@
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
+
 import colorsys
 import pickle
 
