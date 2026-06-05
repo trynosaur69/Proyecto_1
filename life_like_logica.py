@@ -1,3 +1,7 @@
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
+
 from random import randint
 from copy import deepcopy
 import interfaz_inicial
