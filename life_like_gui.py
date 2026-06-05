@@ -1,3 +1,7 @@
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
+
 import pickle
 import pygame
 import life_like_logica as con
