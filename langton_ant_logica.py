@@ -84,7 +84,7 @@ def generar_colores(reglas):
     Entradas y restricciones:
     - reglas: string utilizado para el comportamiento de la hormiga: Sin restricciones.
     - colores: Diccionario que contiene las posiciones y los colores para cada letra del string: Sin restricciones.
-    - giro: Lista formada del string de Ls y Rs: Sin restricciones.
+    - giro: Lista formada del string de Ls y Rs: Sin restricciones: Sin restricciones.
     Salidas:
     - Diccionario con las posiciones del string y sus colores.
     - Lista con letras del string.
@@ -102,9 +102,9 @@ def generar_colores(reglas):
 def crear_matriz(filas, cols, valor):
     """Función que se encarga de generar las matrices.
     Entradas y restricciones:
-    - filas: Filas que tendrá la matriz
-    - cols: Columnas que tendrá la matriz
-    - valor: Valor de las celdas de la matriz.
+    - filas: Filas que tendrá la matriz: Sin restricciones.
+    - cols: Columnas que tendrá la matriz: Sin restricciones.
+    - valor: Valor de las celdas de la matriz: Sin restricciones.
     Salidas:
     - Matriz formada
     Autores:
