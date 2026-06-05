@@ -3,7 +3,10 @@
 #Alexei Quesada Leandro
 
 import random
-import interfaz_inicial 
+import interfaz_inicial
+
+filas = 20
+cols = 20
 
 matriz = []
 revisor = []
