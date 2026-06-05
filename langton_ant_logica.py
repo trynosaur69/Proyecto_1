@@ -12,7 +12,7 @@ célula = 0
 ant_f = 0
 ant_c = 0
 hormiga = -1
-dirección = "U"
+dirección = "R"
 
 colores = []
 color = []
@@ -141,7 +141,7 @@ def init(filasi,columnas,reglas):
     ant_f = filas // 2
     ant_c = cols // 2
     hormiga = -1
-    dirección = "U"
+    dirección = "R"
     célula = matriz[ant_f][ant_c]
     revisor[ant_f][ant_c] = célula
     matriz[ant_f][ant_c] = hormiga
