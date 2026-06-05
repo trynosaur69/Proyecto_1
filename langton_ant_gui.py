@@ -1,4 +1,6 @@
-#Queda pendiente pickle y reiniciar con pausar y matriz 0
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
 
 import pygame
 import langton_ant_logica as Horlan
@@ -9,10 +11,10 @@ TICK = 200
 def main(reglas,filas,columnas,tamaño):
     """Programa principal de La Hormiga de Langton.
     Entradas y restricciones:
-    - reglas: Sin restricciones.
-    - filas: Sin restricciones.
-    - columnas: Sin restricciones.
-    - tamaño: Sin restricciones.
+    - reglas: : Sin restricciones.
+    - filas: : Sin restricciones.
+    - columnas: : Sin restricciones.
+    - tamaño: : Sin restricciones.
     Salidas:
     - Ninguna
     Autores:
@@ -26,8 +28,8 @@ def main(reglas,filas,columnas,tamaño):
     clock = pygame.time.Clock()
     loop = True
     pausado = False
-    window.fill(Horlan.colores[0])
     while loop:
+        window.fill(Horlan.colores[0])
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 loop = False
