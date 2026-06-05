@@ -1,3 +1,7 @@
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
+
 #Queda pendiente pickle y reiniciar con pausar y matriz 0
 
 import pygame
