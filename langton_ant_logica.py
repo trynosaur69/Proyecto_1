@@ -14,8 +14,7 @@ ant_c = 0
 hormiga = -1
 dirección = "R"
 
-colores = []
-color = []
+colores = {}
 giro = []
 
 def siguiente(giro, célula, matriz):
@@ -83,26 +82,22 @@ def avanzar_hormiga():
 def generar_colores(reglas):
     """Procedimiento que se encarga de generar los colores y posición para cada letra del string recibido y separa las letras del string en una lista.
     Entradas y restricciones:
-    - colores: Lista que contiene las posiciones para cada color de las letras del string.
-    - color: Lista que contiene los colores para cada letra del string.
+    - reglas: string utilizado para el comportamiento de la hormiga: Sin restricciones.
+    - colores: Diccionario que contiene las posiciones y los colores para cada letra del string: Sin restricciones.
     - giro: Lista formada del string de Ls y Rs: Sin restricciones.
     Salidas:
-    - Lista con colores.
+    - Diccionario con las posiciones del string y sus colores.
     - Lista con letras del string.
-    - Lista con posiciones del string.
     Autores:
     Andrey Morales Reyes
     Alexei Quesada Leandro"""
-    global colores, color, giro
+    global colores, giro
     string = reglas
     giro = []
     giro = list(string)
-    colores = []
+    colores = {}
     for i in range(len(string)):
-        colores.append(i)
-    color = []
-    for i in range(len(colores)):
-        color.append((random.randint(0, 255), random.randint(0, 255), random.randint(0, 255)))
+        colores[i] = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
 def crear_matriz(filas, cols, valor):
     """Función que se encarga de generar las matrices.
@@ -132,7 +127,7 @@ def init(filasi,columnas,reglas):
     Salidas:
     - Ninguna """
     global filas, cols, ant_f, ant_c
-    global hormiga, dirección, matriz, color, giro, revisor
+    global hormiga, dirección, matriz, giro, revisor
     filas = filasi
     cols = columnas
     generar_colores(reglas)
