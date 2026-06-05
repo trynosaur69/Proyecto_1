@@ -29,7 +29,6 @@ def main(reglas,filas,columnas,tamaño):
     loop = True
     pausado = False
     while loop:
-        window.fill(Horlan.colores[0])
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 loop = False
@@ -37,8 +36,11 @@ def main(reglas,filas,columnas,tamaño):
                 if event.key == pygame.K_SPACE:
                     pausado = not pausado
                 elif event.key == pygame.K_r:
-                    window.fill(Horlan.colores[0])
+                    pausado = False
                     Horlan.init(filas,columnas,reglas)
+                    for f in range(Horlan.filas):
+                        for c in range(Horlan.cols):
+                            Horlan.revisor[f][c] = -2
                 elif event.key == pygame.K_g:
                     estado_juego = {
                         "matriz": Horlan.matriz,
@@ -47,8 +49,7 @@ def main(reglas,filas,columnas,tamaño):
                         "ant_c": Horlan.ant_c,
                         "direccion": Horlan.dirección,
                         "celula": Horlan.célula,
-                        "pausado": pausado
-                    }
+                        "pausado": pausado}
                     with open("partida_hormiga.pkl", "wb") as archivo:
                         pickle.dump(estado_juego, archivo)
                     print("Simulación guardada")
@@ -63,6 +64,14 @@ def main(reglas,filas,columnas,tamaño):
                         Horlan.célula = estado_cargado["celula"]
                         window.fill(Horlan.colores[0])
                         print("Simulación cargada")
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                if event.button == 1:
+                    x, y = event.pos
+                    c = x // tamaño
+                    f = y // tamaño
+                    Horlan.matriz[f][c] = (Horlan.matriz[f][c] + 1) % len(reglas)
+                    Horlan.revisor[f][c] = Horlan.matriz[f][c]
+        window.fill(Horlan.colores[0])
         for f in range(Horlan.filas):
             for c in range(Horlan.cols):
                 x = c * tamaño
