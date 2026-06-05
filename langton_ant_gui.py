@@ -9,10 +9,10 @@ TICK = 100000
 def main(reglas,filas,columnas,tamaño):
     """Programa principal de La Hormiga de Langton.
     Entradas y restricciones:
-    - reglas: : Sin restricciones.
-    - filas: : Sin restricciones.
-    - columnas: : Sin restricciones.
-    - tamaño: : Sin restricciones.
+    - reglas: Sin restricciones.
+    - filas: Sin restricciones.
+    - columnas: Sin restricciones.
+    - tamaño: Sin restricciones.
     Salidas:
     - Ninguna
     Autores:
