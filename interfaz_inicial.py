@@ -1,3 +1,7 @@
+#Creadores
+#Andrey Morales Reyes
+#Alexei Quesada Leandro
+
 from easygui import *
 import langton_ant_gui as horlan2
 import life_like_gui as lili
