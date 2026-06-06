@@ -40,6 +40,7 @@ def main(surv,birth,tamaño,filas,columnas):
                 if keys[pygame.K_SPACE]:
                     pausa = not pausa
                 elif keys[pygame.K_r]:
+                    pausa = False
                     M = con.generar_matriz_aleatoria(filas, columnas)
                 elif keys[pygame.K_b]:
                     M = con.generar_matriz_vacia(filas,columnas)
@@ -55,7 +56,6 @@ def main(surv,birth,tamaño,filas,columnas):
                     with open("partida_conway.pkl", "rb") as archivo:
                         estado_cargado = pickle.load(archivo)
                     M = estado_cargado["matriz"]
-                    pausa = estado_cargado["pausa"]
                     print("Simulación cargada")
             if event.type == pygame.MOUSEBUTTONDOWN:
                 buttons = pygame.mouse.get_pressed()
